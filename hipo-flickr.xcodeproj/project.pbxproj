@@ -13,6 +13,8 @@
 		D34354D621D93A66003E3013 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34354D421D93A66003E3013 /* Main.storyboard */; };
 		D34354D821D93A67003E3013 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34354D721D93A67003E3013 /* Assets.xcassets */; };
 		D34354DB21D93A67003E3013 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34354D921D93A67003E3013 /* LaunchScreen.storyboard */; };
+		D3CD06E821DE22820002E2D9 /* FlickrCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CD06E721DE22820002E2D9 /* FlickrCell.swift */; };
+		D3CD06EA21DE23970002E2D9 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CD06E921DE23970002E2D9 /* Photo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		D34354D721D93A67003E3013 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D34354DA21D93A67003E3013 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D34354DC21D93A67003E3013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3CD06E721DE22820002E2D9 /* FlickrCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrCell.swift; sourceTree = "<group>"; };
+		D3CD06E921DE23970002E2D9 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,12 +73,14 @@
 		D34354CF21D93A66003E3013 /* hipo-flickr */ = {
 			isa = PBXGroup;
 			children = (
+				D3CD06E721DE22820002E2D9 /* FlickrCell.swift */,
 				D34354D021D93A66003E3013 /* AppDelegate.swift */,
 				D34354D221D93A66003E3013 /* ViewController.swift */,
 				D34354D421D93A66003E3013 /* Main.storyboard */,
 				D34354D721D93A67003E3013 /* Assets.xcassets */,
 				D34354D921D93A67003E3013 /* LaunchScreen.storyboard */,
 				D34354DC21D93A67003E3013 /* Info.plist */,
+				D3CD06E921DE23970002E2D9 /* Photo.swift */,
 			);
 			path = "hipo-flickr";
 			sourceTree = "<group>";
@@ -189,6 +195,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-hipo-flickr/Pods-hipo-flickr-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -196,6 +203,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,7 +218,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3CD06EA21DE23970002E2D9 /* Photo.swift in Sources */,
 				D34354D321D93A66003E3013 /* ViewController.swift in Sources */,
+				D3CD06E821DE22820002E2D9 /* FlickrCell.swift in Sources */,
 				D34354D121D93A66003E3013 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
