@@ -10,23 +10,11 @@ import UIKit
 
 class FlickrCell: UITableViewCell {
 
-    @IBOutlet weak var ownerImage: UIImageView!
+    @IBOutlet weak var ownerImage: UIImageView?
     @IBOutlet weak var owner: UILabel!
     @IBOutlet weak var flickrImage: UIImageView!
     
-    
-    
-    func setPhoto(photo: Photo) {
-        ownerImage.image = photo.image
-        owner.text = photo.owner
-        flickrImage.image = photo.image
-    }
-    
-    
-    
- // func setVideo(photo: Photo) {
-    //    ownerImage.image = photo.image
-    //    flickrImage.image = photo.image
+
         
   //  }
     override func awakeFromNib() {

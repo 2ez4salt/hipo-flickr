@@ -12,12 +12,12 @@ import UIKit
 
 class Photo {
     
-    var image: UIImage
-    var owner: String
-    var imageOwner : UIImage
+    var image: String?
+    var owner: String?
+    var imageOwner : String?
     
     
-    init(image: UIImage, owner: String, imageOwner:UIImage) {
+    init(image: String, owner: String, imageOwner:String) {
         self.image = image
         self.imageOwner = imageOwner
         self.owner = owner
