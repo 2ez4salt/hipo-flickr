@@ -29,11 +29,11 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
                     print(response)
                     if let image = response.result.value {
                         DispatchQueue.main.async {
-                            cell.ownerImage?.image = image
+                            cell.ownerImage?.image = image.af_imageRoundedIntoCircle()
                         }
                     }
                 })            }
-            cell.ownerImage?.image=#imageLiteral(resourceName: "profile-42914_960_720") // if user hasnt profile photo !!
+            cell.ownerImage?.image=#imageLiteral(resourceName: "profile-42914_960_720").af_imageRoundedIntoCircle() // if user hasnt profile photo !!
             if let imageUrl = self.photoArray[indexPath.row] as? String{
                 Alamofire.request(imageUrl).responseImage(completionHandler: { (response) in
                     print(response)
