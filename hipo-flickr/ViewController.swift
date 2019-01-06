@@ -12,24 +12,23 @@ import SwiftyJSON
 import AlamofireImage
 
 class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+  
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.titleArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"FlickrCell") as! FlickrCell
         if self.titleArray.count>0 {
-            cell.owner.text=self.titleArray[indexPath.row] as? String
+            cell.owner.text=self.ownerArray[indexPath.row] as? String ?? "No Owner Name Input"
             cell.ownerImage?.image=#imageLiteral(resourceName: "beginner-first-app")
             if let imageUrl = self.photoArray[indexPath.row] as? String{
                 Alamofire.request(imageUrl).responseImage(completionHandler: { (response) in
                     print(response)
                     if let image = response.result.value {
-                        /*
-                         let size = CGSize(width: 1000.0, height: 1000.0)
-                         // Scale image to size disregarding aspect ratio
-                         let scaledImage = image.af_imageScaled(to: size)
-                         */
-                        //                        let roundedImage = image.af_imageRounded(withCornerRadius: 100.0)
                         DispatchQueue.main.async {
                             cell.flickrImage?.image = image
                         }
@@ -48,13 +47,12 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     var photos: [Photo] = []
     var photoArray = [Any]()
     var titleArray = [Any]()
- 
+    var ownerArray = [String]()
 
     
-    let url = "https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=d5f8b2e48bce5c0a4bb35600698f9c03&per_page=3&format=json&nojsoncallback=1&auth_token=72157688390143833-7d5915542fe2c638&api_sig=cadb02a8c5a52cd004b98e7cc399d05a"
+    let url = "https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=11be623ab853a1abd2c219f8df6005e6&extras=owner_name%2Cdate_upload&per_page=10&format=json&nojsoncallback=1&auth_token=72157703965826591-eaf8231e5ecce0d4&api_sig=2f294ae2e71bcfa0cf29e0d38ca73f2f"
 
-    override func viewWillAppear(_ animated: Bool) {
-       
+    override func viewDidLoad() {
         super.viewDidLoad()
         Alamofire.request(url, method: .get).responseJSON { response in
             if response.result.isSuccess {
@@ -62,31 +60,24 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
                 for item in jsonData["photos"]["photo"].arrayValue{
                     let secret = item["secret"]
                     let server = item["server"]
-                    let owner = item["owner"]
+                    let owner = item["ownername"]
                     let farm = item["farm"]
                     let id = item["id"]
                     var photoUrl: String {
                         return String("https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg")
-                        
                     }
-                    
-
                     self.photoArray.append(photoUrl)
-                    print(item["owner"])
+                    self.ownerArray.append(item["ownername"].string ?? "x")
                     self.titleArray.append(item["title"].string ?? "x")
-                    
                 }
-               // print(self.titleArray)
-                print(self.titleArray)
-                print(self.photoArray)
                 self.tableView?.reloadData()
+                self.getJSONData()
+
             }
         }
     }
-}
-
+    func getJSONData() {
     
- 
-
-
-
+   
+        
+    }}
