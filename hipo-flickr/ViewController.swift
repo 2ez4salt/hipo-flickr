@@ -11,11 +11,54 @@ import Alamofire
 import SwiftyJSON
 import AlamofireImage
 
-class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate {
   
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.photoArray.removeAll()
+        self.profilePhotoArray.removeAll()
+        self.ownerArray.removeAll()
+        self.titleArray.removeAll()
+        let tags = searchBar.text
+        let finaltags = tags?.replacingOccurrences(of: " ", with: "+")
+        
+        let SearchUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a7a564b411d3c9fb8341e8a74c3da9b8&tags=\(finaltags!)&extras=owner_name%2C+icon_server%2C+date_upload&per_page=5&format=json&nojsoncallback=1"
+        Alamofire.request(SearchUrl, method: .get).responseJSON { response in
+            if response.result.isSuccess {
+                let jsonData : JSON = JSON(response.result.value!)
+                for item in jsonData["photos"]["photo"].arrayValue{
+                    var secret = item["secret"]
+                    var server = item["server"]
+                    var owner = item["owner"]
+                    var farm = item["farm"]
+                    var id = item["id"]
+                    var iconfarm = item["iconfarm"]
+                    var iconserver = item["iconserver"]
+                    var photoUrl: String {
+                        return String("https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg")
+                    }
+                    print(photoUrl)
+                    var ProfilePhotoUrl:String{
+                        return String("https://farm\(iconfarm).staticflickr.com/\(iconserver)/buddyicons/\(owner).jpg")
+                    }
+                   
+                    self.photoArray.append(photoUrl)
+                    self.profilePhotoArray.append(ProfilePhotoUrl)
+                    self.ownerArray.append(item["ownername"].string ?? "x")
+                    self.titleArray.append(item["title"].string ?? "x")
+                }
+       
+                self.tableView?.reloadData()
+}
+        }
+        
+        print(SearchUrl)
+        self.view.endEditing(true)
+}
+   
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.titleArray.count
@@ -60,25 +103,23 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     var ownerArray = [String]()
 
     
-    let url = "https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=11be623ab853a1abd2c219f8df6005e6&extras=owner_name%2C+icon_server%2C+date_upload&per_page=10&format=json&nojsoncallback=1&auth_token=72157703965826591-eaf8231e5ecce0d4&api_sig=269494fa0bdda6a8b98da1b9cfb093cc"
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    let url = "https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=4076cafc4e9cdbe04daefd31930edeb0&extras=owner_name%2C+icon_server%2C+date_upload&per_page=2&format=json&nojsoncallback=1"
+    func getPhotos(){
         Alamofire.request(url, method: .get).responseJSON { response in
             if response.result.isSuccess {
                 let jsonData : JSON = JSON(response.result.value!)
                 for item in jsonData["photos"]["photo"].arrayValue{
-                    print(item)
-                    let secret = item["secret"]
-                    let server = item["server"]
-                    let owner = item["owner"]
-                    let farm = item["farm"]
-                    let id = item["id"]
-                    let iconfarm = item["iconfarm"]
-                    let iconserver = item["iconserver"]
+                    var secret = item["secret"]
+                    var server = item["server"]
+                    var owner = item["owner"]
+                    var farm = item["farm"]
+                    var id = item["id"]
+                    var iconfarm = item["iconfarm"]
+                    var iconserver = item["iconserver"]
                     var photoUrl: String {
                         return String("https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg")
                     }
+                    print(photoUrl)
                     var ProfilePhotoUrl:String{
                         return String("https://farm\(iconfarm).staticflickr.com/\(iconserver)/buddyicons/\(owner).jpg")
                     }
@@ -88,15 +129,15 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
                     self.titleArray.append(item["title"].string ?? "x")
                 }
                 self.tableView?.reloadData()
-                self.getJSONData()
-                for item in self.profilePhotoArray{
-                    print(item)
-                }
+                
             }
         }
     }
-    func getJSONData() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       getPhotos()
+        searchBar.delegate = self
+    }
     
-   
-        
-    }}
+    }
+
