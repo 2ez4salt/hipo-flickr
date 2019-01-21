@@ -60,20 +60,30 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E95-Eo-eAG" userLabel="Date">
+                                                    <rect key="frame" x="303" y="29" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="E95-Eo-eAG" secondAttribute="trailing" constant="14" id="1VR-kM-W6Y"/>
                                                 <constraint firstItem="YxP-Jy-Qka" firstAttribute="top" secondItem="29n-y0-nMt" secondAttribute="bottom" constant="8" id="1vF-SD-N9y"/>
                                                 <constraint firstItem="YxP-Jy-Qka" firstAttribute="leading" secondItem="7az-UR-DgZ" secondAttribute="leadingMargin" constant="-2" id="7cp-wX-8dg"/>
                                                 <constraint firstItem="YxP-Jy-Qka" firstAttribute="bottom" secondItem="7az-UR-DgZ" secondAttribute="bottomMargin" id="DMJ-ke-cu8"/>
                                                 <constraint firstItem="YxP-Jy-Qka" firstAttribute="centerX" secondItem="7az-UR-DgZ" secondAttribute="centerX" id="OTL-NX-HKr"/>
                                                 <constraint firstItem="joG-Gw-yCi" firstAttribute="top" secondItem="7az-UR-DgZ" secondAttribute="topMargin" constant="18" id="PQA-TG-xuu"/>
                                                 <constraint firstItem="joG-Gw-yCi" firstAttribute="leading" secondItem="29n-y0-nMt" secondAttribute="trailing" constant="8" id="Zg5-ca-yeI"/>
+                                                <constraint firstItem="E95-Eo-eAG" firstAttribute="centerY" secondItem="joG-Gw-yCi" secondAttribute="centerY" id="sJY-AV-AO9"/>
                                                 <constraint firstItem="29n-y0-nMt" firstAttribute="top" secondItem="7az-UR-DgZ" secondAttribute="top" constant="21" id="sZa-Zk-h4a"/>
                                                 <constraint firstItem="YxP-Jy-Qka" firstAttribute="top" secondItem="joG-Gw-yCi" secondAttribute="bottom" constant="16" id="uEb-69-yJP"/>
                                                 <constraint firstItem="29n-y0-nMt" firstAttribute="leading" secondItem="7az-UR-DgZ" secondAttribute="leadingMargin" id="yez-VT-i09"/>
+                                                <constraint firstItem="E95-Eo-eAG" firstAttribute="firstBaseline" secondItem="joG-Gw-yCi" secondAttribute="firstBaseline" id="zAs-vu-WaC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="DateUploaded" destination="E95-Eo-eAG" id="cqo-Kn-QsI"/>
                                             <outlet property="flickrImage" destination="YxP-Jy-Qka" id="Zl6-Oc-WO3"/>
                                             <outlet property="owner" destination="joG-Gw-yCi" id="2rR-Bo-keI"/>
                                             <outlet property="ownerImage" destination="29n-y0-nMt" id="f8N-sh-Yh9"/>

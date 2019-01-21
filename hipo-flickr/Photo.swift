@@ -15,11 +15,13 @@ class Photo {
     var image: String?
     var owner: String?
     var imageOwner : String?
+    var DateUploaded : String?
     
     
-    init(image: String, owner: String, imageOwner:String) {
+    init(image: String, owner: String, imageOwner:String,DateUploaded : String) {
         self.image = image
         self.imageOwner = imageOwner
         self.owner = owner
+        self.DateUploaded = DateUploaded
     }
 }

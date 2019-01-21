@@ -6,6 +6,9 @@ target 'hipo-flickr' do
   use_frameworks!
 	pod 'Alamofire', '~> 4.8'
 	pod 'AlamofireImage', '~> 3.5'
+pod 'DateToolsSwift'
+
+
 	 pod 'SwiftyJSON', '~> 4.0'
   # Pods for hipo-flickr
 

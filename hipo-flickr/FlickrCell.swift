@@ -14,7 +14,8 @@ class FlickrCell: UITableViewCell {
     @IBOutlet weak var owner: UILabel!
     @IBOutlet weak var flickrImage: UIImageView!
     
-
+    @IBOutlet weak var DateUploaded: UILabel!
+    
         
   //  }
     override func awakeFromNib() {

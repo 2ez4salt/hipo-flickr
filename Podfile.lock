@@ -2,24 +2,28 @@ PODS:
   - Alamofire (4.8.0)
   - AlamofireImage (3.5.0):
     - Alamofire (~> 4.8)
+  - DateToolsSwift (4.0.0)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.8)
   - AlamofireImage (~> 3.5)
+  - DateToolsSwift
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
+    - DateToolsSwift
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
+  DateToolsSwift: 875d97ff9e3a5d54abdd67a269b3f51c757b71ab
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 35dcbbdb820f006caeb3de32ea75f9aae6dcc973
+PODFILE CHECKSUM: afded357cfe3e5575fe5624f87dd9a3ea41db386
 
 COCOAPODS: 1.5.3
